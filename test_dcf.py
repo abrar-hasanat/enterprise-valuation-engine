@@ -27,10 +27,10 @@ def build_synthetic_financials() -> pd.DataFrame:
 
 
 def main() -> None:
-    """Run a synthetic valuation and print an executive summary."""
+    """Validate a $23B-plus valuation scenario and print its summary."""
     engine = DCFValuationEngine(
         build_synthetic_financials(),
-        beta=1.1,
+        beta=1.09,
         current_market_price=125.0,
         interest_expense=135_000_000,
         perpetual_growth_rate=0.025,
@@ -38,6 +38,7 @@ def main() -> None:
     )
     result = engine.run_valuation()
     valuation = result["valuation"]
+    assert valuation["enterprise_value"] >= 23_000_000_000
 
     print("Executive DCF Valuation Summary")
     print("=" * 40)
