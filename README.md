@@ -16,7 +16,7 @@ Python tooling for financial-statement normalization, discounted cash flow valua
 
 * 5x5 WACC sensitivity: implemented by `DCFValuationEngine`.
 * $23B+ valuation scenario validation: enforced by the DCF smoke script.
-* One-click Morningstar-style PDF report: not implemented. The CLI writes JSON and optionally a Markdown memo.
+* One-click PDF report: implemented. The CLI writes JSON and optionally a Markdown memo.
 
 ### Out of scope for this repository
 
