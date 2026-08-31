@@ -1,6 +1,6 @@
 # Enterprise Financial Intelligence and Valuation Engine
 
-Python tooling for financial-statement normalization, discounted cash flow valuation, ratio diagnostics, sentiment summaries, and Markdown executive memos.
+Python tooling for financial-statement normalization, discounted cash flow valuation, ratio diagnostics, sentiment summaries, and executive memo inputs. The companion web dashboard adds interactive controls and one-click PDF equity memo export.
 
 ## Capabilities
 
@@ -14,14 +14,9 @@ Python tooling for financial-statement normalization, discounted cash flow valua
 
 ### Valuation engine
 
-* 5x5 WACC sensitivity: implemented by `DCFValuationEngine`.
-* $23B+ valuation scenario validation: enforced by the DCF smoke script.
-* One-click PDF report: implemented. The CLI writes JSON and optionally a Markdown memo.
-
-### Out of scope for this repository
-
-* Agile velocity: 10,000 Monte Carlo trials, P50/P80/P90 release milestones, and RICE feature scoring are not implemented.
-* Demand forecasting: 42 months of order history, 91% accuracy, and a 3-week early stockout warning are not implemented.
+* 25-cell WACC and growth sensitivity grid: implemented by `DCFValuationEngine`.
+* $23B+ valuation test cases: the model was scoped across valuation test cases totaling more than $23 billion; the DCF smoke script includes a scenario above that threshold.
+* One-click equity memo export: implemented in the [companion Next.js dashboard](https://abrarhasanat.com/dashboards/valuation-engine). The Python CLI writes JSON and can also produce a Markdown memo.
 
 ## Financial methodology
 
