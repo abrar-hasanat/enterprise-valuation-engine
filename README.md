@@ -10,13 +10,14 @@ Python tooling for financial-statement normalization, discounted cash flow valua
 * Calculate enterprise value, equity value, intrinsic share price, and a 5x5 WACC and perpetual-growth sensitivity matrix.
 * Produce ratio summaries, health flags, sentiment summaries, a JSON payload, and a Markdown executive memo.
 
-## Specification alignment
+## Implementation notes
 
 ### Valuation engine
 
 * 25-cell WACC and growth sensitivity grid: implemented by `DCFValuationEngine`.
-* $23B+ valuation test cases: the model was scoped across valuation test cases totaling more than $23 billion; the DCF smoke script includes a scenario above that threshold.
-* One-click equity memo export: implemented in the [companion Next.js dashboard](https://abrarhasanat.com/dashboards/valuation-engine). The Python CLI writes JSON and can also produce a Markdown memo.
+* PDF memo export is available in the [companion web dashboard](https://abrarhasanat.com/dashboards/valuation-engine). The Python CLI writes JSON and can also produce a Markdown memo.
+
+The smoke tests use synthetic financial statements. A large valuation in a test is an arithmetic result, not capital managed or a company engagement. The web dashboard uses its own scenario assumptions; it does not execute this Python engine.
 
 ## Financial methodology
 

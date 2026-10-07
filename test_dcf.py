@@ -27,7 +27,7 @@ def build_synthetic_financials() -> pd.DataFrame:
 
 
 def main() -> None:
-    """Validate a $23B-plus valuation scenario and print its summary."""
+    """Check the equity bridge and sensitivity output on synthetic financials."""
     engine = DCFValuationEngine(
         build_synthetic_financials(),
         beta=1.09,
@@ -38,7 +38,12 @@ def main() -> None:
     )
     result = engine.run_valuation()
     valuation = result["valuation"]
-    assert valuation["enterprise_value"] >= 23_000_000_000
+    assert abs(valuation["equity_value"] - (valuation["enterprise_value"] + 1_000_000_000 - 2_250_000_000)) < 0.01
+    assert abs(valuation["intrinsic_share_price"] * 192_000_000 - valuation["equity_value"]) < 0.01
+    grid = result["sensitivity_matrix"]
+    assert grid.shape == (5, 5)
+    assert (grid.diff(axis=0).iloc[1:] < 0).all().all()
+    assert (grid.diff(axis=1).iloc[:, 1:] > 0).all().all()
 
     print("Executive DCF Valuation Summary")
     print("=" * 40)
